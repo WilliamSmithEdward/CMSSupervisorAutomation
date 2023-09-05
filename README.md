@@ -6,10 +6,10 @@ VB.Net code for interfacing with Avaya's CMS Supervisor call center management s
 The example below establishes a connection to both an MS Access database and a CMS server. After setting up the connections, it triggers a report generation based on selected date ranges and finally, disconnects from the CMS server.
 
 * Initializes a connection to an MS Access database using the given path: "PATH_TO_ACCESS_DB.accdb".
-* Initializes a connection to the CMS Supervisor with specified server details and user credentials.
-* Connects to the CMS Supervisor.
+* Initializes a connection to the CMS server with specified server details and user credentials.
+* Connects to the CMS server.
 * Calls the `RunMyCMSReport` method of the Reporting class to generate a report. The report is based on the date range selected using startDateTimePicker and endDateTimePicker controls.
-* Disconnects from the CMS Supervisor.
+* Disconnects from the CMS server.
 
 ```csharp
 Private Sub RunReportButton_Click(sender As Object, e As EventArgs) Handles RunReportButton.Click
@@ -33,12 +33,12 @@ End Sub
 ### Considerations
 * Ensure the path to the MS Access database ("PATH_TO_ACCESS_DB.accdb") is valid and accessible.
 * The logic in the `RunMyCMSReport` method should be tailored to your CMS report as well as the database table you have implemented.
-* The server address, ACD number, and user credentials for the CMS Supervisor should be valid to establish a successful connection.
+* The server address, ACD number, and user credentials for the CMS server should be valid to establish a successful connection.
 * Date range is selected using startDateTimePicker and endDateTimePicker controls, and it's essential they are correctly set before triggering this method.
 
 ## CMSSupervisorConnection Class
 
-This class is used to establish and manage a connection with the CMS Supervisor.
+This class is used to establish and manage a connection with the CMS server.
 
 ### Properties
 
@@ -54,9 +54,9 @@ This class is used to establish and manage a connection with the CMS Supervisor.
 
 #### `Public Sub New(ByVal serverAddress As String, ByVal acd As Integer, ByVal userName As String, ByVal password As String)`
 
-Constructor for the CMSSupervisorConnection class. Initializes any default values, sets up required configurations, and prepares the instance for communication with the CMS Supervisor.
+Constructor for the CMSSupervisorConnection class. Initializes any default values, sets up required configurations, and prepares the instance for communication with the CMS server.
 
-* **serverAddress**: The hostname or IP address of the CMS Supervisor server.
+* **serverAddress**: The hostname or IP address of the CMS server.
 * **acd**: The Automatic Call Distributor (ACD) number. Represents the ACD system number on the CMS which the connection is intended for.
 * **userName**: The username used for authentication.
 * **password**: The password used for authentication.
@@ -65,15 +65,15 @@ Constructor for the CMSSupervisorConnection class. Initializes any default value
 
 #### `Public Sub Connect()`
 
-Establishes the connection to the CMS Supervisor using provided credentials.
+Establishes the connection to the CMS server using provided credentials.
 
 #### `Public Sub Disconnect()`
 
-Disconnects and releases the resources associated with the CMS Supervisor connection.
+Disconnects and releases the resources associated with the CMS server connection.
 
 #### `Public Function ExecuteQuery(reportPath As String, reportParams As Dictionary(Of String, String), timeZone As String) As String`
 
-Executes a report query on the CMS Supervisor and returns the result as a string.
+Executes a report query on the CMS server and returns the result as a string.
 
 - **reportPath**: Path to the desired report.
 - **reportParams**: Key-value pairs of parameters for the report.
@@ -108,7 +108,7 @@ This class provides example methods for generating different types of reports.
 
 #### `Public Shared Sub RunSkillSummary(cms As CMSSupervisorConnection, access As MSAccessConnection, startDate As String, endDate As String)`
 
-This method is designed to process and insert skill summary reports into an MS Access database from the data extracted using a CMS Supervisor connection.
+This method is designed to process and insert skill summary reports into an MS Access database from the data extracted using a CMS server connection.
 
 * **cms**: CMSSupervisorConnection object.
 * **access**: MSAccessConnection object.
