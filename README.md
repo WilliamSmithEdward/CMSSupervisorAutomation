@@ -1,9 +1,9 @@
 # CMSSupervisorAutomation
-VB.Net code for interfacing with Avaya's CMS Supervisor call center management software. Unit tests were performed using CMS Supervisor R19.
+VB.Net code for interfacing with Avaya's CMS Supervisor call center management software. Testing was performed using CMS Supervisor R19.
 
 ## Example
 
-The example below establishes a connection to both an MS Access database and a CMS Supervisor. After setting up the connections, it triggers a report generation based on selected date ranges and finally, disconnects from the CMS Supervisor.
+The example below establishes a connection to both an MS Access database and a CMS server. After setting up the connections, it triggers a report generation based on selected date ranges and finally, disconnects from the CMS server.
 
 * Initializes a connection to an MS Access database using the given path: "PATH_TO_ACCESS_DB.accdb".
 * Initializes a connection to the CMS Supervisor with specified server details and user credentials.
